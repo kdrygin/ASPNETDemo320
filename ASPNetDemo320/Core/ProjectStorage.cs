@@ -6,15 +6,12 @@ namespace ASPNetDemo320
 {
     public static class ProjectStorage
     {
-        public static List<Project> Projects { get; private set; } = new List<Project>
+        public static List<Project> Projects { get; private set; }
+
+        static ProjectStorage()
         {
-            new Project
-            {
-                Name = "CGI Examples",
-                Link = "https://github.com/kdrygin/CgiExamples",
-                Description = "dotNet Core 3.1 C# CGI Examples"
-            }
-        };
+            Projects = new List<Project>();
+        }
 
         public static void Add(Project project)
         {
