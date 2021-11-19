@@ -12,8 +12,10 @@
     <Folder Include="Views\Projects\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="Core\" />
+    <Folder Include="wwwroot\data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\images\" />
+    <Content Remove="wwwroot\data\" />
   </ItemGroup>
 </Project>
