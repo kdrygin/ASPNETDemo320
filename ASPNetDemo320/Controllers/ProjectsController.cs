@@ -13,18 +13,20 @@ namespace ASPNetDemo320
     {
         private IWebHostEnvironment Environment;
         private string wwwPath;
+        ProjectStorage projectStorage;
 
         public ProjectsController(IWebHostEnvironment _environment)
         {
             Environment = _environment;
             wwwPath = this.Environment.WebRootPath;
+            projectStorage = new ProjectStorage();
         }
 
         public IActionResult Index()
         {
-            ProjectStorage.LoadFromFile(wwwPath + "/data/projects.csv");
-            var projects = ProjectStorage.Projects;
-            return View(projects);
+            projectStorage.LoadFromFile(wwwPath + "/data/projects.csv");
+            var projects = projectStorage.Projects;
+            return View(projectStorage.Projects);
         }
 
         public IActionResult Add()
@@ -35,15 +37,15 @@ namespace ASPNetDemo320
         [HttpPost]
         public IActionResult Add(Project project)
         {
-            ProjectStorage.Add(project);
-            ProjectStorage.SaveToFile(wwwPath + "/data/projects.csv");
+            projectStorage.Add(project);
+            projectStorage.SaveToFile(wwwPath + "/data/projects.csv");
             return RedirectToAction("Index");
         }
 
         public IActionResult Remove(string name)
         {
-            ProjectStorage.RemoveByName(name);
-            ProjectStorage.SaveToFile(wwwPath + "/data/projects.csv");
+            projectStorage.RemoveByName(name);
+            projectStorage.SaveToFile(wwwPath + "/data/projects.csv");
             return RedirectToAction("Index");
         }
     }

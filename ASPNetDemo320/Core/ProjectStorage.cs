@@ -4,21 +4,21 @@ using System.Collections.Generic;
 
 namespace ASPNetDemo320
 {
-    public static class ProjectStorage
+    public class ProjectStorage
     {
-        public static List<Project> Projects { get; private set; }
+        public  List<Project> Projects { get; private set; }
 
-        static ProjectStorage()
+        public ProjectStorage()
         {
             Projects = new List<Project>();
         }
 
-        public static void Add(Project project)
+        public void Add(Project project)
         {
             Projects.Add(project);
         }
 
-        public static void SaveToFile(string path)
+        public void SaveToFile(string path)
         {
             using (var tw = new StreamWriter(path))
             {
@@ -27,7 +27,7 @@ namespace ASPNetDemo320
             }
         }
 
-        public static void LoadFromFile(string path)
+        public void LoadFromFile(string path)
         {
             Projects.Clear();
             try
@@ -45,7 +45,7 @@ namespace ASPNetDemo320
             { }
         }
 
-        public static void RemoveByName(string name)
+        public void RemoveByName(string name)
         {
             Projects.RemoveAll(p => p.Name == name);
         }
