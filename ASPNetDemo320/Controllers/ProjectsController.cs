@@ -15,11 +15,11 @@ namespace ASPNetDemo320
         private string wwwPath;
         ProjectStorage projectStorage;
 
-        public ProjectsController(IWebHostEnvironment _environment)
+        public ProjectsController(IWebHostEnvironment _environment, IProjectStorage _projectStorage)
         {
+            projectStorage = (ProjectStorage)_projectStorage;
             Environment = _environment;
             wwwPath = this.Environment.WebRootPath;
-            projectStorage = new ProjectStorage();
         }
 
         public IActionResult Index()

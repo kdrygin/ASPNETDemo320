@@ -4,7 +4,15 @@ using System.Collections.Generic;
 
 namespace ASPNetDemo320
 {
-    public class ProjectStorage
+    public interface IProjectStorage
+    {
+        void Add(Project project);
+        void RemoveByName(string name);
+        void SaveToFile(string path);
+        void LoadFromFile(string path);
+    }
+
+    public class ProjectStorage : IProjectStorage
     {
         public  List<Project> Projects { get; private set; }
 
