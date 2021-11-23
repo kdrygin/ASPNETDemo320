@@ -11,3 +11,5 @@ main - простое приложение на основе мастер-кла
 save_projects_static - добавлено сохранение проектов в CSV-файл
 
 save_projects_di - работа с проектами реализована через Dependency injection
+https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/dependency-injection?view=aspnetcore-6.0
+
