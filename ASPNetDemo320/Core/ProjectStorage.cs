@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace ASPNetDemo320
 {
+    // интерфейс для использования в Dependency injection
     public interface IProjectStorage
     {
         void Add(Project project);
@@ -12,6 +13,7 @@ namespace ASPNetDemo320
         void LoadFromFile(string path);
     }
 
+    // класс - хранилище проектов, реализующий интерфейс IProjectStorage
     public class ProjectStorage : IProjectStorage
     {
         public  List<Project> Projects { get; private set; }

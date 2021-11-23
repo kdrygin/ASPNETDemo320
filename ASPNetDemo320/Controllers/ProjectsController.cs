@@ -11,17 +11,24 @@ namespace ASPNetDemo320
 {
     public class ProjectsController : Controller
     {
+        // для получения пути до wwwroot
         private IWebHostEnvironment Environment;
         private string wwwPath;
+
+        // ссылка на объект - хранилище проектов
         ProjectStorage projectStorage;
 
         public ProjectsController(IWebHostEnvironment _environment, IProjectStorage _projectStorage)
         {
+            //
             projectStorage = (ProjectStorage)_projectStorage;
+
+            // получить путь до wwwroot
             Environment = _environment;
-            wwwPath = this.Environment.WebRootPath;
+            wwwPath = Environment.WebRootPath;
         }
 
+        // при входе на страницу проектов загружаем проекты из файла. 
         public IActionResult Index()
         {
             projectStorage.LoadFromFile(wwwPath + "/data/projects.csv");
@@ -34,6 +41,7 @@ namespace ASPNetDemo320
             return View();
         }
 
+        // при добавлении проекта сохраняем все проекты в файл
         [HttpPost]
         public IActionResult Add(Project project)
         {
@@ -42,6 +50,7 @@ namespace ASPNetDemo320
             return RedirectToAction("Index");
         }
 
+        // при удалении проекта сохраняем все проекты в файл
         public IActionResult Remove(string name)
         {
             projectStorage.RemoveByName(name);
